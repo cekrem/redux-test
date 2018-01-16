@@ -7,11 +7,9 @@ const configureStore = () => {
   const persistedState = loadState()
   const store = createStore(rootReducer, persistedState)
 
-  // Persist state to local storage
+  // Persist state to local storage (not more often than every second)
   store.subscribe(throttle(() => {
-    saveState({
-      todos: store.getState().todos
-    })
+    saveState(store.getState())
   }, 1000))
 
   return store

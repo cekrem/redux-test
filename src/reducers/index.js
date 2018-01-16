@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 const list = (state = [], action) => {
   switch (action.type) {
     case 'ADD':
-      return state.concat(Date.now())
+      return state.concat(action.element)
     case 'CLEAR':
       return []
     default:
